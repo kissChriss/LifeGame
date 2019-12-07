@@ -6,31 +6,31 @@ using System.Threading;
 class LifeGame {
   public static void Main (string[] args) {
     GameField gameField = new GameField();
-    gameField.Construct();
-    gameField.Game(30);
+    gameField.Construct(); //make first positions for each cell on the field
+    gameField.Game(30); //game start point with steps number
 
     
   }
 }
 
 public class Cell{
-  public int state = 0;
+  public int state = 0; //cell is dead firstly
 
   public override string ToString(){
     if (state == 1)
-      return "# ";
+      return "# "; //alive cell image on the field
     else
-      return "  ";  
+      return "  "; //dead cell image on the field
   }
 
   public void Start(){
     Random rand = new Random();
-    this.state = rand.Next(0, 2);
+    this.state = rand.Next(0, 2); //first random life status for cell
   }
 
 
   public void Life(int[] neigbours){
-    int nNum = neigbours.Sum();
+    int nNum = neigbours.Sum(); //alive cells-neneigbours number
     
     if (nNum < 2){
       this.state = 0;
@@ -41,7 +41,7 @@ public class Cell{
     }
 
     else if (nNum == 3){
-      this.state = 1;
+      this.state = 1; 
     }
 
   }
@@ -49,15 +49,15 @@ public class Cell{
 
 
 public class GameField{
-  public static int lifeFieldLen = 15;
-  Cell[,] lifeField = new Cell[lifeFieldLen, lifeFieldLen];
+  public static int lifeFieldLen = 15; 
+  Cell[,] lifeField = new Cell[lifeFieldLen, lifeFieldLen]; //field size = 15x15
 
 
   public void Construct(){
     for (int i = 0; i < lifeFieldLen; i++){
       for (int j = 0; j < lifeFieldLen; j++){
-        this.lifeField[i, j] = new Cell();
-        this.lifeField[i, j].Start();
+        this.lifeField[i, j] = new Cell(); //create cells
+        this.lifeField[i, j].Start(); //create first cells life status 
       }
     }
   }
@@ -68,7 +68,7 @@ public class GameField{
       Console.Clear();
       for (int i = 0; i < lifeFieldLen; i++){
         for (int j = 0; j < lifeFieldLen; j++){
-          int[] neigbours_states = new int[8];
+          int[] neigbours_states = new int[8]; //alive cells-neigbours counter
           
           try {
             neigbours_states[0] = lifeField[i-1, j-1].state;
@@ -126,8 +126,8 @@ public class GameField{
             neigbours_states[7] = 0;
           }
 
-          lifeField[i, j].Life(neigbours_states);
-          Console.Write(lifeField[i, j]);
+          lifeField[i, j].Life(neigbours_states); //change life status depend on alive neigbours number
+          Console.Write(lifeField[i, j]); //draw current step 
         }
       Console.WriteLine();
       }
