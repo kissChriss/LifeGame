@@ -29,8 +29,8 @@ public class Cell{
   }
 
 
-  public void Life(int[] neigbours){
-    int nNum = neigbours.Sum(); //alive cells-neneigbours number
+  public void Life(int nNum){
+    //alive cells-neigbours number
     
     if (nNum < 2){
       this.state = 0;
@@ -68,62 +68,54 @@ public class GameField{
       Console.Clear();
       for (int i = 0; i < lifeFieldLen; i++){
         for (int j = 0; j < lifeFieldLen; j++){
-          int[] neigbours_states = new int[8]; //alive cells-neigbours counter
+          int neigbours_states = 0;
           
           try {
-            neigbours_states[0] = lifeField[i-1, j-1].state;
+            neigbours_states += lifeField[i-1, j-1].state;
           }
           catch (Exception e){
-            neigbours_states[0] = 0;
           }
 
           try {
-            neigbours_states[1] = lifeField[i-1, j].state;
+            neigbours_states += lifeField[i-1, j].state;
           }
           catch (Exception e){
-            neigbours_states[1] = 0;
           }
 
           try {
-            neigbours_states[2] = lifeField[i-1, j+1].state;
+            neigbours_states += lifeField[i-1, j+1].state;
           }
           catch (Exception e){
-            neigbours_states[2] = 0;
           }
 
           try {
-            neigbours_states[3] = lifeField[i, j-1].state;
+            neigbours_states += lifeField[i, j-1].state;
           }
           catch (Exception e){
-            neigbours_states[3] = 0;
           }
 
           try {
-            neigbours_states[4] = lifeField[i, j+1].state;
+            neigbours_states += lifeField[i, j+1].state;
           }
           catch (Exception e){
-            neigbours_states[4] = 0;
           }
 
           try {
-            neigbours_states[5] = lifeField[i+1, j-1].state;
+            neigbours_states += lifeField[i+1, j-1].state;
           }
           catch (Exception e){
-            neigbours_states[5] = 0;
           }
 
           try {
-            neigbours_states[6] = lifeField[i+1, j].state;
+            neigbours_states += lifeField[i+1, j].state;
           }
           catch (Exception e){
-            neigbours_states[6] = 0;
           }
           
           try {
-            neigbours_states[7] = lifeField[i+1, j+1].state;
+            neigbours_states += lifeField[i+1, j+1].state;
           }
           catch (Exception e){
-            neigbours_states[7] = 0;
           }
 
           lifeField[i, j].Life(neigbours_states); //change life status depend on alive neigbours number
