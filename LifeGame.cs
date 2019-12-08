@@ -40,7 +40,11 @@ public class Cell{
       this.state = 0;
     }
 
-    else if (nNum == 3){
+    else if (state == 1 && (nNum == 3 || nNum == 2)){
+      this.state = 1; 
+    }
+
+    else if (state == 0 && nNum == 3){
       this.state = 1; 
     }
 
