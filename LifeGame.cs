@@ -77,49 +77,49 @@ public class GameField{
           try {
             neigbours_states += lifeField[i-1, j-1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i-1, j].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i-1, j+1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i, j-1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i, j+1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i+1, j-1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           try {
             neigbours_states += lifeField[i+1, j].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
           
           try {
             neigbours_states += lifeField[i+1, j+1].state;
           }
-          catch (Exception e){
+          catch (IndexOutOfRangeException e){
           }
 
           lifeField[i, j].Life(neigbours_states); //change life status depend on alive neigbours number
